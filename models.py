@@ -69,11 +69,15 @@ class UNet(nn.Module):
         # 최종 출력
         return self.final_conv(dec1)
     
+    # 모델크기
+    
 # efficientnet + unet
 class effi_UNet(torch.nn.Module):
     def __init__(self, encoder='timm-efficientnet-b7', encoder_weights='advprop',
                  in_channels=1, num_classes=1, activation='sigmoid', device='cuda'):
         super(effi_UNet, self).__init__()
+
+        # weight 학습된 거 가져와서 장점
 
         self.model = smp.Unet(
             encoder_name=encoder,
@@ -93,3 +97,5 @@ def modeltype(model):
         return UNet(in_channels=1, out_channels=1)
     elif model == "effi_unet":
         return effi_UNet()
+    
+# cursor IDE
